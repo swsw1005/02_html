@@ -1,0 +1,15 @@
+{
+    "java.dependency.syncWithFolderExplorer": true,
+    "sqltools.connections": [
+        {
+            "database": "mydb1",
+            "dialect": "MySQL",
+            "name": "local mysql",
+            "password": "12345",
+            "port": 3500,
+            "server": "localhost",
+            "username": "root"
+        }
+    ],
+    "liveServer.settings.port": 5582
+}

@@ -1,0 +1,12 @@
+JSP ??
+
+HTML.add(java code)     <>     Servlet   JAVA class에서 HTML 출력 (String)
+
+
+지시어 : <%@ ... %>
+선언 : <%! ... %>
+식(표현) : <%= ... %>
+scriplet : <% ... %>
+액션태그 : <jsp: ... />
+
+

@@ -1,0 +1,161 @@
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class Test01_Servlet extends HttpServlet {
+
+    public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        System.out.println("syso  Hello Servlet!!!");
+        // 서버 콘솔 출력
+
+        response.setCharacterEncoding("UTF-8");
+        // 자, 이제 응답의 인코딩은 UTF8이다
+
+        response.setContentType("text/html; charset=UTF-8");
+        // 브라우저. 너도 이걸 읽을때 html + UTF-8로 읽도록해
+
+        PrintWriter out = response.getWriter();
+
+        out.println(a1);
+
+        out.close();
+    }
+
+}
+
+
+## servlet 패키지 안잡히는 경우
+
+이클립스 : add jar  
+
+==
+// 자바 프로젝트 라이브러리 잡듯 똑같이
+.classpath
+	<classpathentry kind="lib" path="lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
+
+
+
+## servlet 톰캣에서 실행
+
+1.   Tomcat 8.0\webapps\ROOT\WEB-INF\ web.xml   추가 (서버 재실행 필요)
+
+// 패키지 없는 경우
+  <servlet>
+    <servlet-name>test01</servlet-name>
+    <servlet-class>Test01_Servlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>test01</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+
+///패키지 있는 경우
+  <servlet>
+    <servlet-name>test02</servlet-name>
+    <servlet-class>swsw.Test02_Servlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>test02</servlet-name>
+    <url-pattern>/hello2</url-pattern>
+  </servlet-mapping>
+
+
+  $$$  servlet 3.0 이후
+
+@WebServlet("/hello")
+public class Test01_Servlet extends HttpServlet {
+
+>> 어노테이션만으로 매핑성공  >> web.xml 설정 불필요
+*** web.xml의  metadata-complete="false"   설정필요!!!
+****** 모든 메타데이터를 web.xml에 저장하겠냐는 옵션 => false해야 어노테이션 매핑 가능
+
+
+2.   Tomcat 8.0\webapps\ROOT\WEB-INF\classes 아래 class 파일 추가
+    패키지 있다면 해당 패키지 경로 또한 그대로 (당연한 소리)
+
+
+
+
+
+
+
+
+
+
+
+
+
+Servlet 2.x 이전 방식
+
+    web.xml 수동 매핑
+
+    <servlet>
+        <servlet-name>kukaro-jsp</servlet-name>
+        <jsp-file>/kukaro.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>kukaro-jsp</servlet-name>
+        <url-pattern>/kukaro</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>test01</servlet-name>
+        <servlet-class>Test01_Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>test01</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+
+
+
+Servlet 3.0 이후 방식
+
+    web.xml
+    ....
+     metadata-complete="false">
+     ......
+
+//각자 어노테이션으로.... // 생산성++  업무분담++
+@WebServlet("/hello")
+public class Test01_Servlet extends HttpServlet {
+
+  setCharacterEncoding("UTF-8") << 항상 일일히?
+
+  전체 톰캣을 설정할수도....but 각 웹앱 같은설정?
+
+  !!!!  서블릿 필터를 쓰자
+
+
+  @WebFilter("/*")
+public class Test07_filter implements Filter {
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain fChain)
+            throws IOException, ServletException {
+
+        System.out.println("before filter");
+        request.setCharacterEncoding("UTF-8");
+
+        fChain.doFilter(request, response);// request를 response로 내보낸다.
+
+        System.out.println("after filter");
+
+    }
+
+
+
+<filter>
+<filter-name> Test07_filter </filter-name>
+<url-filter> swsw.Test07_filter </url-filter>
+</filter>
+
+<filter-mapping>
+<filter-name> Test07_filter </filter-name>
+<url-pattern> /* </url-pattern>
+</filter-mapping>

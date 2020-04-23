@@ -1,0 +1,38 @@
+웹프로그램 하려면
+
+1. JDK 설치한다.(환견변수 설정)
+
+2. Tomcat를 설치한다(JDK을 연결된다)==웹서버  , WAS종류
+
+★WAS (Web Application Server) 종류
+
+BEA사의 Web Logic.
+IBM사의 Web Spere.
+TMAX사의 Jeus.
+JBOSS (RedHat으로 인수되었음)
+Sun microsystems사의 Sun Application Server.
+Apache project의 Tomcat.
+
+
+
+3. 개발 툴 준비 (이클립스) : 
+   
+   이클립스 실행 >> workspace 생성 >>>Tomcat서버를 설치한다 
+
+   그 다음 프로젝트를 만든다 
+
+
+
+※ DB는 별개 이다.  필요할 때 설치하여 사용하면 된다
+
+대신 DB Driver(*.jar)는 프로젝트에 넣거나(WEB-NF/lib)
+
+jdk경로 / jre/ lib /ext / 여기에 넣고(자바 컴파일 에서 사용)
+Tomcat / lib 에도 넣는다(웹에서 사용)
+
+★JDBC 의 인터페이스들은 java에서 제공
+Connection
+Statement, PreparedStatement
+ResultSet
+
+★Driver클래스만 DB회사에서 제공 

@@ -1,0 +1,44 @@
+JDK 설치
+환경설정
+
+  컴퓨터==우클릭==속성==고급 시스템 설정(클릭)
+==고급(탭)==환경변수 (클릭)
+
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_121
+path=%JAVA_HOME%\bin; 나머지는 그대로 두고
+
+새로만들기
+
+classpath=%JAVA_HOME%\lib\tools.jar;
+
+c:\>java -version  (자바버전 확인) 
+
+실습---
+class Test{
+  public static void main(String args[]){
+     System.out.println("오늘은 2017년 08월 17일 입니다");
+  }
+}
+------------------
+"Test.java" 저장
+
+C:\_java\01_test>javac Test.java   컴파일
+
+
+C:\_java\01_test>java Test   실행
+오늘은 2017년 08월 17일 입니다
+
+------------------------------------------------
+
+Tomcat 설치 
+
+
+http://localhost:9000/
+
+
+
+
+
+
+
+
