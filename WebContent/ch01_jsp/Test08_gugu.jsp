@@ -60,6 +60,19 @@ td {
 		</table>
 	</a>
 
+<%
+String msg ="12345";
+
+char arr[]=msg.toCharArray();
+
+	for (int i = 0; i < arr.length; i++) {
+		out.print("<h4>"+arr[i]+"</h4>");
+	}
+
+
+
+%>
+
 
 
 
