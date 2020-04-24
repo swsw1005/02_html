@@ -12,11 +12,11 @@ if(ip.equals("192.168.137.47")){
 	out.print("접근이 제한된 IP입니다.");
 	return;
 }
-%>
+    %>
 
-<li>메서드 방식:<%=request.getMethod() %><br>
-<li>요청 URI:<%=request.getRequestURI() %><br>
-<li>요청 URL:<%=request.getRequestURL() %><br>
+    <li>메서드 방식:<%=request.getMethod() %><br>
+    <li>요청 URI:<%=request.getRequestURI() %><br>
+    <li>요청 URL:<%=request.getRequestURL() %><br>
 <br>
 
 <li>프로토콜:<%=request.getProtocol() %><br> <%-- 서버 HTTP/1.1 --%>
