@@ -1,0 +1,15 @@
+내장객체종류
+
+1. out
+2. request
+3. response
+4. application
+5. pageContext
+6. config
+7. page
+8. exception
+9. session
+
+Test01_out.jsp
+
+Test02_request.jsp

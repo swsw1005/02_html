@@ -1,36 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import = "java.util.*"%>
-<%@ page import = "java.sql.*"%>
-<%!
-//변수 선언
- 
-%>
- 
-<%
-//자바 구문
-request.setCharacterEncoding("UTF-8");
-%>
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page buffer="10kb" %>
+
+<%-- Test01_out.jsp --%>
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Document</title>
-<style>
- * { margin: 0px;   padding: 0px;  } 
- 
- 
-</style>
-<script>
-// 스크립트
- 
- 
-</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-<!-- 내용 -->
- 
- 
+
+<%
+int total=out.getBufferSize();// 전체 출력 버퍼사이즈를 구한다 디폴트가 8kb이다.
+int rate=out.getRemaining();// 남아있는 버퍼사이즈를 구한다
+%>
+
+전체 출력 버퍼사이즈 : <%=total %><br>
+남아있는 버퍼사이즈 : <%=rate %><br>
+사용중인 버퍼사이즈 : <%=total-rate %><br>
 </body>
- 
 </html>
